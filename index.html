@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8fa" />
+  <title>Payomatix | Merchant Operations Desk</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div><strong>payomatix</strong><small>MERCHANT OPERATIONS</small></div>
+    </div>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav>
+      <button class="nav-link active" data-page="overview"><span>◫</span> Overview</button>
+      <button class="nav-link" data-page="transactions"><span>⇄</span> Transactions</button>
+      <button class="nav-link" data-page="tickets"><span>▤</span> Support tickets <i id="ticketCount">3</i></button>
+      <button class="nav-link" data-page="settlements"><span>▥</span> Settlements</button>
+      <button class="nav-link" data-page="knowledge"><span>⌘</span> Help centre</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><div class="help-icon">✦</div><b>Need a hand?</b><p>Use the guided checks to trace a payment or resolve a merchant query.</p><button class="text-button" data-go="knowledge">Open help centre →</button></div>
+      <div class="user-profile"><div class="avatar">AK</div><div><b>Support Agent</b><small>Demo workspace</small></div><span class="online-dot"></span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+      <div class="crumb">Workspace <span>/</span> <b id="pageCrumb">Overview</b></div>
+      <div class="top-actions"><span class="environment"><span></span> DEMO ENVIRONMENT</span><button class="icon-button" title="Notifications">♧</button><div class="avatar small">AK</div></div>
+    </header>
+
+    <section class="page active" id="page-overview">
+      <div class="welcome-row"><div><p class="eyebrow">THURSDAY, 06 NOVEMBER 2026</p><h1>Good morning, team <span>✦</span></h1><p class="muted">A clear view of payment health, open queries and today's settlement activity.</p></div><button class="primary" id="newTicketTop">＋ Create support ticket</button></div>
+      <div class="notice"><div class="notice-icon">i</div><div><b>Training workspace</b><p>All records are sample data. No real payments are processed and no bank or UPI network is connected.</p></div><button class="notice-close" aria-label="Dismiss">×</button></div>
+      <div class="metric-grid">
+        <article class="metric"><div class="metric-top"><span>Today's transactions</span><span class="metric-icon blue">⇄</span></div><strong>1,284</strong><small class="positive">↑ 8.4% <span>vs yesterday</span></small></article>
+        <article class="metric"><div class="metric-top"><span>Success rate</span><span class="metric-icon green">✓</span></div><strong>98.2%</strong><small class="positive">↑ 0.6% <span>vs yesterday</span></small></article>
+        <article class="metric"><div class="metric-top"><span>Open support tickets</span><span class="metric-icon amber">▤</span></div><strong id="openMetric">03</strong><small class="neutral">2 need a follow-up</small></article>
+        <article class="metric"><div class="metric-top"><span>Pending settlement</span><span class="metric-icon violet">₹</span></div><strong>₹82,460</strong><small class="neutral">Next payout cycle</small></article>
+      </div>
+      <div class="content-grid">
+        <section class="panel"><div class="panel-heading"><div><h2>Priority support queue</h2><p>Cases that need attention</p></div><button class="quiet-button" data-go="tickets">View all →</button></div><div id="priorityList" class="priority-list"></div></section>
+        <section class="panel health-panel"><div class="panel-heading"><div><h2>Payment health</h2><p>Today's demo activity</p></div><span class="live-label"><i></i> Updated just now</span></div><div class="health-score"><div class="ring"><div><b>98.2%</b><small>success rate</small></div></div><div class="health-legend"><p><i class="dot green-dot"></i> Successful <b>1,261</b></p><p><i class="dot amber-dot"></i> Pending <b>12</b></p><p><i class="dot red-dot"></i> Failed <b>11</b></p></div></div><div class="health-foot">Payment status is illustrative and not connected to a live processor.</div></section>
+      </div>
+      <section class="panel table-panel"><div class="panel-heading"><div><h2>Recent transactions</h2><p>Latest activity across demo merchants</p></div><button class="quiet-button" data-go="transactions">All transactions →</button></div><div class="table-wrap"><table><thead><tr><th>TRANSACTION</th><th>MERCHANT</th><th>METHOD</th><th>AMOUNT</th><th>STATUS</th><th>TIME</th></tr></thead><tbody id="recentTransactions"></tbody></table></div></section>
+    </section>
+
+    <section class="page" id="page-transactions">
+      <div class="page-heading"><div><p class="eyebrow">PAYMENT OPERATIONS</p><h1>Transactions</h1><p class="muted">Search, inspect and trace payment records using their references.</p></div><button class="secondary" id="exportTransactions">↓ Export CSV</button></div>
+      <section class="panel"><div class="filter-row"><div class="search-box">⌕ <input id="transactionSearch" placeholder="Search by ID, UTR, merchant or amount..." /></div><select id="statusFilter"><option value="all">All statuses</option><option>Successful</option><option>Failed</option><option>Pending</option><option>Refunded</option></select><select id="methodFilter"><option value="all">All methods</option><option>UPI</option><option>Card</option><option>Netbanking</option></select></div><div class="table-wrap"><table><thead><tr><th>TRANSACTION ID</th><th>MERCHANT</th><th>METHOD</th><th>AMOUNT</th><th>STATUS</th><th>DATE & TIME</th><th></th></tr></thead><tbody id="transactionsBody"></tbody></table></div></section>
+      <p class="footnote">Demo records are fictional. Reference formats are examples only.</p>
+    </section>
+
+    <section class="page" id="page-tickets">
+      <div class="page-heading"><div><p class="eyebrow">CUSTOMER & MERCHANT CARE</p><h1>Support tickets</h1><p class="muted">Keep every query traceable, assigned and easy to follow.</p></div><button class="primary" id="newTicket">＋ New ticket</button></div>
+      <div class="ticket-tabs"><button class="tab active" data-ticket-filter="all">All tickets</button><button class="tab" data-ticket-filter="Open">Open</button><button class="tab" data-ticket-filter="In progress">In progress</button><button class="tab" data-ticket-filter="Resolved">Resolved</button></div>
+      <section class="panel"><div id="ticketList" class="ticket-list"></div></section>
+    </section>
+
+    <section class="page" id="page-settlements">
+      <div class="page-heading"><div><p class="eyebrow">MERCHANT PAYOUTS</p><h1>Settlement reconciliation</h1><p class="muted">Understand the difference between gross sales and net payout.</p></div><button class="secondary" id="downloadSettlement">↓ Download breakdown</button></div>
+      <div class="settlement-summary"><div><small>Gross captured sales</small><b>₹28,640.00</b></div><div><small>Adjustments & deductions</small><b class="negative">− ₹4,200.00</b></div><div><small>Net settlement</small><b>₹24,440.00</b></div></div>
+      <section class="panel"><div class="panel-heading"><div><h2>Sample settlement · SET-2026-1105-014</h2><p>Merchant: Urban Cart · Settlement date: 05 Nov 2026</p></div><span class="status success">Paid</span></div><div class="table-wrap"><table><thead><tr><th>COMPONENT</th><th>DESCRIPTION</th><th>AMOUNT</th><th>TYPE</th></tr></thead><tbody id="settlementRows"></tbody></table></div><div class="reconcile-note"><b>How to read this:</b> Gross captured transactions are adjusted for refunds, disputes, fees and taxes before the net payout is transferred. Always compare the same business date and settlement cut-off.</div></section>
+      <section class="panel reconcile-tool"><div class="panel-heading"><div><h2>Quick reconciliation calculator</h2><p>Enter the figures from a merchant report to calculate the expected net payout.</p></div></div><div class="calc-grid"><label>Gross captured sales <div class="money-input">₹ <input id="grossInput" type="number" value="28640" min="0"></div></label><label>Refunds <div class="money-input">₹ <input id="refundInput" type="number" value="1800" min="0"></div></label><label>Chargebacks / disputes <div class="money-input">₹ <input id="chargeInput" type="number" value="400" min="0"></div></label><label>Processing fees + tax <div class="money-input">₹ <input id="feesInput" type="number" value="600" min="0"></div></label></div><div class="calc-result"><span>Estimated net payout</span><b id="netResult">₹25,840.00</b></div><p class="footnote">Illustrative calculator only. Actual settlement rules, reserves, adjustments and fee treatment depend on the merchant agreement and processor statement.</p></section>
+    </section>
+
+    <section class="page" id="page-knowledge">
+      <div class="page-heading"><div><p class="eyebrow">SUPPORT PLAYBOOK</p><h1>Help centre</h1><p class="muted">Short, practical guidance for common payment questions.</p></div></div>
+      <div class="knowledge-grid">
+        <article class="knowledge-card"><div class="knowledge-icon blue">↗</div><h3>UPI debit, order failed</h3><p>Do not ask the customer to pay again immediately. First check transaction status and trace the UTR/RRN.</p><ul><li>Confirm amount, time and VPA.</li><li>Check the bank response and merchant callback.</li><li>For specified failed UPI cases, RBI TAT may be T+1 or T+5 depending on the failure type.</li></ul><span class="reference-tag">Reference: UTR / RRN</span></article>
+        <article class="knowledge-card"><div class="knowledge-icon violet">↩</div><h3>Card refund not received</h3><p>Confirm the refund was submitted and accepted before giving the customer a timeline.</p><ul><li>Open the original card transaction.</li><li>Check refund status and acquirer response.</li><li>Share the ARN so the card issuer can trace a processed refund.</li></ul><span class="reference-tag">Reference: ARN</span></article>
+        <article class="knowledge-card"><div class="knowledge-icon amber">₹</div><h3>Settlement amount mismatch</h3><p>Gross sales and net settlement can differ because of adjustments and cut-off timing.</p><ul><li>Compare the same business date and batch.</li><li>Review refunds, disputes, fees, taxes and holds.</li><li>Share an itemised settlement breakdown.</li></ul><span class="reference-tag">Reference: Settlement ID + breakdown</span></article>
+        <article class="knowledge-card"><div class="knowledge-icon green">✓</div><h3>Support response checklist</h3><p>A good support reply is calm, specific and traceable.</p><ul><li>Acknowledge the issue politely.</li><li>State what you are checking.</li><li>Share the correct reference ID.</li><li>Give a realistic next step; never invent a completion time.</li></ul><span class="reference-tag">Principle: Verify before promise</span></article>
+      </div>
+      <section class="panel source-panel"><h2>Official reference desk</h2><p>Use current official guidance before quoting a regulatory deadline or policy.</p><a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11693" target="_blank" rel="noreferrer">RBI — failed transaction turnaround times ↗</a><a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank" rel="noreferrer">NPCI — UPI product overview ↗</a></section>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><p class="eyebrow">CASE MANAGEMENT</p><h2 id="modalTitle">Create support ticket</h2></div><button class="icon-button" id="closeModal">×</button></div>
+      <form id="ticketForm">
+        <label>Customer / merchant name<input id="formName" required placeholder="e.g. Urban Cart" /></label>
+        <div class="form-row"><label>Issue type<select id="formType"><option>UPI payment issue</option><option>Card refund delay</option><option>Settlement mismatch</option><option>Other</option></select></label><label>Priority<select id="formPriority"><option>Normal</option><option>High</option><option>Urgent</option></select></label></div>
+        <label>Amount (₹)<input id="formAmount" type="number" min="0" placeholder="e.g. 640" /></label>
+        <label>Issue summary<textarea id="formSummary" required rows="3" placeholder="Describe what happened..."></textarea></label>
+        <div class="modal-actions"><button type="button" class="secondary" id="cancelModal">Cancel</button><button type="submit" class="primary">Create ticket</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
